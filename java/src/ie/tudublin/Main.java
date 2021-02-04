@@ -23,7 +23,7 @@ public class Main
         // What will get printed out??
 
         // 1. topcat, Garfield
-        // 2. garfield, Garfield 
+        // 2. garfield, Garfield
 
         Cat ginger = new Cat("Ginger");
         while(ginger.getNumLives() > 0)
@@ -45,9 +45,15 @@ public class Main
         processing.core.PApplet.runSketch( a, new HelloProcessing2());
     }
 
+	public void BugZap()
+	{
+		String[] a = {"MAIN"};
+		processing.core.PApplet.runSketch( a, new BugZap());
+	}
+
     public static void main(String[] args)
     {
         Main main = new Main();
-        main.helloProcessing2();
+        main.BugZap();
     }
-} 
+}

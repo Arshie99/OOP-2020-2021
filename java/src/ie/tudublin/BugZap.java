@@ -115,6 +115,7 @@ public class BugZap extends PApplet {
 		fill(255);
 		drawPlayer(playerX, playerY, playerWidth);
 		drawBug(bugX, bugY);
+		drawBug(bugX, bugY);
 		moveBug();
 
 		text("Score: " + score, 20, 20);

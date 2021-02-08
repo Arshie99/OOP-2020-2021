@@ -3,35 +3,46 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class BugZap extends PApplet {
+
+	//settings method
 	public void settings() {
 		size(500, 500);
 	}
 
+	//the setup method
 	public void setup() {
 		reset();
 	}
 
+	//location of player,speed,width,center point of player
 	float playerX, playerY;
 	float playerSpeed = 5;
 	float playerWidth = 40;
 	float halfPlayerWidth = playerWidth / 2;
 
+	//bug location, bug width, center of bug
 	float bugX, bugY, bugWidth = 30;
 	float halfBugWidth = bugWidth / 2;
 
+	//score counter
 	int score = 0;
 
+	//method to restart the game
 	void reset() {
+		//reset position of bug
 		resetBug();
+		//reset position of player
 		playerX = width / 2;
 		playerY = height - 50;
 	}
 
+	//random coordinates for the bug to reset to
 	void resetBug() {
 		bugX = random(halfBugWidth, width - halfBugWidth);
 		bugY = 50;
 	}
 
+	//method to draw a bug
 	void drawBug(float x, float y) {
 		// Draw the bug
 		stroke(255);
@@ -98,15 +109,15 @@ public class BugZap extends PApplet {
 	}
 
 	void moveBug() {
-		if ((frameCount % 60) == 0) {
-			bugX += random(-5, 5);
+		if ((frameCount % 5) == 0) {
+			bugX += random(-10, 10);
 			if (bugX < halfBugWidth) {
 				bugX = halfBugWidth;
 			}
 			if (bugX > width - halfBugWidth) {
 				bugX = width - halfBugWidth;
 			}
-			bugY += 2;
+			bugY += 5;
 		}
 	}
 
@@ -119,9 +130,7 @@ public class BugZap extends PApplet {
 			fill(255);
 			drawPlayer(playerX, playerY, playerWidth);
 			drawBug(bugX, bugY);
-			drawBug(bugX, bugY);
 			moveBug();
-
 			text("Score: " + score, 20, 20);
 		}
 		else{

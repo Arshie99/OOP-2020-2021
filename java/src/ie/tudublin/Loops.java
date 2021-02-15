@@ -7,7 +7,7 @@ public class Loops extends PApplet {
     public void settings() {
         size(500, 500);
         cx = width / 2;
-        cy = height / 2;        
+        cy = height / 2;
     }
 
     int mode = 0;
@@ -16,7 +16,7 @@ public class Loops extends PApplet {
     float cy;
 
     public void keyPressed() {
-        // the value of mode will be the number of the 
+        // the value of mode will be the number of the
         // number key pressed
         if (keyCode >= '0' && keyCode <= '9')
             mode = keyCode - '0';
@@ -37,10 +37,10 @@ public class Loops extends PApplet {
             {
                 float w = 200;
                 float h = 50;
-                rectMode(CENTER);                    
+                rectMode(CENTER);
                 if (mouseX > cx -  (w /2) && mouseX < cx + (w/2) && mouseY > cy - (h/2) && mouseY < cy + (h/2))
                 {
-                    fill(50, 255, 255);                
+                    fill(50, 255, 255);
                 }
                 else
                 {
@@ -48,9 +48,9 @@ public class Loops extends PApplet {
                 }
                 rect(cx, cy, w, h);
                 break;
-            }                
+            }
             case 1:
-                fill(50, 255, 255);                                    
+                fill(50, 255, 255);
                 if (mouseX < cx && mouseY < cy)
                 {
                     rect(0, 0, cx, cy);
@@ -102,7 +102,7 @@ public class Loops extends PApplet {
                     float angle = theta * i;
                     float x = sin(angle) * radius;
                     float y = cos(angle) * radius;
-                    line(cx, cy, cx + x, cy + y);                    
+                    line(cx, cy, cx + x, cy + y);
                 }
             }
             break;
@@ -131,8 +131,8 @@ public class Loops extends PApplet {
                     fill(i * cgap, 255, 255);
                     w = i * gap;
                     ellipse(cx, cy, w, w);
-                    
-                }                
+
+                }
             }
             case 7:
             {
@@ -144,7 +144,7 @@ public class Loops extends PApplet {
                 {
                     for(int j = 0 ; j < numCircles ; j ++)
                     {
-                        float c = ((cgap * (i + j)) + offset) % 255; 
+                        float c = ((cgap * (i + j)) + offset) % 255;
                         fill(c, 255, 255);
                         ellipse((w / 2) + w * j, (w / 2) + w * i, w, w);
                     }

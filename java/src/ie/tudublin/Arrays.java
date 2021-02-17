@@ -27,7 +27,7 @@ public class Arrays extends PApplet {
             text(i, border * 0.5f, x);
         }
     }
-    
+
     // Return the sum of all the elements in an array
     float sum(float[] array) {
         float sum = 0;
@@ -109,15 +109,6 @@ public class Arrays extends PApplet {
 
         // Draw a bar chart of the rainfall!!
         // Use the map function
-
-        colorMode(HSB);
-        float w = width / (float) rainfall.length;
-        for (int i = 0; i < rainfall.length; i++) {
-            noStroke();
-            fill(random(255), 255, 255);
-            float x = map(i, 0, rainfall.length, 0, width);
-            rect(x, height, w, -rainfall[i]);
-        }
     }
 
 
@@ -126,6 +117,15 @@ public class Arrays extends PApplet {
         switch (mode) {
             case 0: {
                 // Bar chart
+                colorMode(HSB);
+                float w = width / (float) rainfall.length;
+
+                for (int i = 0; i < rainfall.length; i++) {
+                    noStroke();
+                    fill(i* (255/w), 255, 255);
+                    float x = map(i, 0, rainfall.length, 0, width);
+                    rect(x, height-50, w, -rainfall[i]);
+                }
                 break;
             }
             case 1: {

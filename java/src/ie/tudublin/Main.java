@@ -23,7 +23,7 @@ public class Main
         // What will get printed out??
 
         // 1. topcat, Garfield
-        // 2. garfield, Garfield 
+        // 2. garfield, Garfield
 
         Cat ginger = new Cat("Ginger");
         while(ginger.getNumLives() > 0)
@@ -62,13 +62,13 @@ public class Main
         String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Arrays());
     }
-    
+
     public void life()
     {
         String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Life());
     }
-    
+
     public void colorfulLife()
     {
         String[] a = {"MAIN"};
@@ -86,4 +86,4 @@ public class Main
         Main main = new Main();
         main.starMap();
     }
-} 
+}

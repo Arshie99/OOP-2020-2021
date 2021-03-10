@@ -17,7 +17,7 @@ public class Audio1 extends PApplet {
 
     public void settings() {
         size(512, 512);
-        // fullScreen(P3D, SPAN); // Try this for full screen multiple monitor support :-) Be careful of exceptions!
+        // fullScreen(P3D, 1);// Try this for full screen multiple monitor support :-) Be careful of exceptions!
     }
 
     float y = 200;
@@ -29,7 +29,7 @@ public class Audio1 extends PApplet {
         minim = new Minim(this);
         ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         ap = minim.loadFile("heroplanet.mp3", width);
-        //ab = ai.mix; // Connect the buffer to the mic
+        // ab = ai.mix; // Connect the buffer to the mic
         ab = ap.mix; // Connect the buffer to the mp3 file
         colorMode(HSB);
         lerpedBuffer = new float[width];
@@ -82,36 +82,106 @@ public class Audio1 extends PApplet {
                     line(i, halfHeight - lerpedBuffer[i] * halfHeight * 4, halfHeight + lerpedBuffer[i] * halfHeight * 4, i);
                 }
 
-                // See the difference lerping makes? It smooths out the jitteryness of average, so the visual looks smoother
-                ellipse(width / 4, 100, average * 500, average * 500);
-                ellipse(width / 2, 100, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
+                // // See the difference lerping makes? It smooths out the jitteryness of average, so the visual looks smoother
+                // ellipse(width / 4, 100, average * 500, average * 500);
+                // ellipse(width / 2, 100, 50 + (lerpedAverage * 500), 50 + (lerpedAverage * 500));
         
-                // This is another example of how lerping works
-                ellipse(200, y, 30, 30);
-                ellipse(300, lerpedY, 30, 30);
-                y += random(-10, 10);
-                lerpedY = lerp(lerpedY, y, 0.1f);
+                // // This is another example of how lerping works
+                // ellipse(200, y, 30, 30);
+                // ellipse(300, lerpedY, 30, 30);
+                // y += random(-10, 10);
+                // lerpedY = lerp(lerpedY, y, 0.1f);
                 break;
+       
             }   
             case 1:
             {
+                // Iterate over all the elements in the audio buffer
+                for (int i = 0; i < ab.size(); i++) {
+
+                float c = map(i, 0, ab.size(), 0, 255);
+                stroke(c, 255, 255);
+                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+    
+                line(i,halfHeight + lerpedBuffer[i] * halfHeight * 4, i,halfHeight - lerpedBuffer[i] * halfHeight * 4);
+                }
                 break;
             }
             case 2:
             {
+                // Iterate over all the elements in the audio buffer
+                for (int i = 0; i < ab.size(); i++) {
+
+                float c = map(i, 0, ab.size(), 0, 255);
+                stroke(c, 255, 255);
+                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+
+                //top
+                line(i,lerpedBuffer[i]* 5, i , 5 - lerpedBuffer[i]* (halfHeight/2) * 5 );
+
+                //left
+                line(lerpedBuffer[i]* 5, i,5 - lerpedBuffer[i] * (halfHeight/2) * 4,i);
+
+                //right
+                line(width + lerpedBuffer[i] * (halfHeight/2) * 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5, i);
+
+                // //bottom
+                line(i,height + lerpedBuffer[i]* 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5);
+                }
                 break;
             }
             case 3:
             {
-                break;
+                // Iterate over all the elements in the audio buffer
+                for (int i = 0; i < ab.size(); i++) {
+
+                    // float c = map(i, 0, ab.size(), 0, 255);
+                    // stroke(255, 255, 255);
+                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+
+                    ellipse(halfHeight,halfHeight, 100 - lerpedBuffer[i] * height * 4,100 - lerpedBuffer[i] * height * 4);
+                    }
+                    break;
             }
             case 4:
             {
+                // Iterate over all the elements in the audio buffer
+                for (int i = 0; i < ab.size(); i++) {
+
+                // float c = map(i, 0, ab.size(), 0, 255);
+                // stroke(255, 255, 255);
+                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+                
+                float positionPositive = halfHeight + lerpedBuffer[i] * halfHeight * 4; 
+                float positionNegative = halfHeight - lerpedBuffer[i] * halfHeight * 4;
+
+                rectMode(CENTER);
+                rect(positionNegative, positionNegative, positionNegative, positionNegative);
+                }
                 break;
             }
             case 5:
             {
-                // ??
+                // Iterate over all the elements in the audio buffer
+                for (int i = 0; i < ab.size(); i++) {
+
+                float c = map(i, 0, ab.size(), 0, 255);
+                stroke(c, 255, 255);
+                lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
+                                //top
+                                line(i,lerpedBuffer[i]* 5, i , 5 - lerpedBuffer[i]* (halfHeight/2) * 5 );
+
+                                //left
+                                line(lerpedBuffer[i]* 5, i,5 - lerpedBuffer[i] * (halfHeight/2) * 4,i);
+                
+                                //right
+                                line(width + lerpedBuffer[i] * (halfHeight/2) * 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5, i);
+                
+                                //bottom
+                                line(i,height + lerpedBuffer[i]* 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5);
+
+                                ellipse(halfHeight,halfHeight, 100 - lerpedBuffer[i] * height * 4,100 - lerpedBuffer[i] * height * 4);
+                }
                 break;
             }
         }        

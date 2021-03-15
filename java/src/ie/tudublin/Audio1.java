@@ -29,6 +29,7 @@ public class Audio1 extends PApplet {
         minim = new Minim(this);
         ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         ap = minim.loadFile("heroplanet.mp3", width);
+        // ap = minim.loadFile("scale.wav", width);
         // ab = ai.mix; // Connect the buffer to the mic
         ab = ap.mix; // Connect the buffer to the mp3 file
         colorMode(HSB);
@@ -168,19 +169,8 @@ public class Audio1 extends PApplet {
                 float c = map(i, 0, ab.size(), 0, 255);
                 stroke(c, 255, 255);
                 lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.1f);
-                                //top
-                                line(i,lerpedBuffer[i]* 5, i , 5 - lerpedBuffer[i]* (halfHeight/2) * 5 );
 
-                                //left
-                                line(lerpedBuffer[i]* 5, i,5 - lerpedBuffer[i] * (halfHeight/2) * 4,i);
-                
-                                //right
-                                line(width + lerpedBuffer[i] * (halfHeight/2) * 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5, i);
-                
-                                //bottom
-                                line(i,height + lerpedBuffer[i]* 5, i,507 - lerpedBuffer[i] * (halfHeight/2) * 5);
-
-                                ellipse(halfHeight,halfHeight, 100 - lerpedBuffer[i] * height * 4,100 - lerpedBuffer[i] * height * 4);
+                ellipse(halfHeight,halfHeight, 100 - lerpedBuffer[i] * height * 4,100 - lerpedBuffer[i] * height * 4);
                 }
                 break;
             }

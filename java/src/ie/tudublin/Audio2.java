@@ -29,9 +29,10 @@ public class Audio2 extends PApplet {
         colorMode(HSB);
 
         minim = new Minim(this);
-        ap = minim.loadFile("heroplanet.mp3", width);
-        ai = minim.getLineIn(Minim.MONO, width, 44100, 16); 
-        ab = ai.mix;
+        ap = minim.loadFile("scale.wav", width);
+        // ai = minim.getLineIn(Minim.MONO, width, 44100, 16); 
+        // ab = ai.mix;
+        ab = ap.mix;
 
         fft = new FFT(width, 44100);
 
@@ -76,6 +77,10 @@ public class Audio2 extends PApplet {
         {
             stroke(map(i, 0, fft.specSize(), 0, 255), 255, 255);
             line(i, 0, i, fft.getBand(i) * halfHeight);
+            if(fft.getBand(i) > fft.getBand(highestBand))
+            {
+                highestBand = i;
+            }
         }
 
         float freq = fft.indexToFreq(highestBand);

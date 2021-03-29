@@ -9,19 +9,6 @@ public class YASC extends PApplet {
     float w = 50;
     float halfW = w / 2;
 
-    void drawPlayer(float x, float y)
-    {
-
-    }
-
-    void movePlayer()
-    {
-        if (checkKey(UP))
-        {
-            y -= 1;
-        }
-    }
-
     public void settings() {
         size(500, 500);
     }

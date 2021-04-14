@@ -1,9 +1,7 @@
 package ie.tudublin;
 
-public class Main
-{
-    public void catsAndDogs()
-    {
+public class Main {
+    public void catsAndDogs() {
         System.out.println("Hello world");
 
         Animal misty = new Dog("Misty");
@@ -23,90 +21,77 @@ public class Main
         // What will get printed out??
 
         // 1. topcat, Garfield
-        // 2. garfield, Garfield 
+        // 2. garfield, Garfield
 
         Cat ginger = new Cat("Ginger");
-        while(ginger.getNumLives() > 0)
-        {
+        while (ginger.getNumLives() > 0) {
             ginger.kill();
         }
         ginger.kill();
     }
 
-    public void helloProcessing1()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new HelloProcessing1());
+    public void helloProcessing1() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new HelloProcessing1());
     }
 
-    public void helloProcessing2()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new HelloProcessing2());
+    public void helloProcessing2() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new HelloProcessing2());
     }
 
-    public void bugZap()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new BugZap());
+    public void bugZap() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new BugZap());
     }
 
-    public void loops()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Loops());
+    public void loops() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Loops());
     }
 
-    public void arrays()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Arrays());
-    }
-    
-    public void life()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Life1());
-    }
-    
-    public void colorfulLife()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new ColorfulLife());
+    public void arrays() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Arrays());
     }
 
-    public void starMap()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new StarMap());
-    }
-    public void gantt()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Gantt());
+    public void life() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Life1());
     }
 
-    public void audio1()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Audio1());
+    public void colorfulLife() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new ColorfulLife());
     }
 
-    public void audio2()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Audio2());
+    public void starMap() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new StarMap());
     }
 
-    public void yasc()
-    {
-        String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new YASC());
+    public void gantt() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Gantt());
     }
 
-    public static void main(String[] args)
-    {
+    public void audio1() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Audio1());
+    }
+
+    public void audio2() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new Audio2());
+    }
+
+    public void yasc() {
+        String[] a = { "MAIN" };
+        processing.core.PApplet.runSketch(a, new YASC());
+    }
+
+    public static void main(String[] args) {
         Main main = new Main();
-        main.yasc();
+        main.loops();
     }
-} 
+}

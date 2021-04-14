@@ -1,7 +1,5 @@
 package ie.tudublin;
 
-import processing.core.PApplet;
-
 public class Ammo {
 
     float x, y;
@@ -11,83 +9,74 @@ public class Ammo {
     YASC yasc;
     float rotation;
 
-    public Ammo(YASC yasc)
-    {
+    public Ammo(YASC yasc) {
         this.yasc = yasc;
         rotation = 0;
-        respawn();            
+        respawn();
     }
 
-    void respawn()
-    {
+    void respawn() {
         // Roll a dice
         int dice = (int) yasc.random(5);
-        switch (dice)
-        {
-            case 0:
-                // left
-                x = -w;
-                y = yasc.random(0, yasc.height);
-                dx = yasc.random(1, 4);
-                dy = yasc.random(-1, 1);
-                break;
-            case 1:
-                // top 
-                x = yasc.random(0, yasc.width);
-                y = -w;
-                dx = yasc.random(-1, 1);
-                dy = yasc.random(1, 4);
-                break;
-            case 2:
-                // right
-                x = yasc.width + w;
-                y = yasc.random(0, yasc.height);
-                dx = yasc.random(-1, -4);
-                dy = yasc.random(-1, 1);
-                break;
-            case 3:
-                // bottom
-                x = yasc.random(0, yasc.width);
-                y = yasc.height + w;
-                dx = yasc.random(-1, 1);
-                dy = yasc.random(-1, -4);
-                break;
+        switch (dice) {
+        case 0:
+            // left
+            x = -w;
+            y = yasc.random(0, yasc.height);
+            dx = yasc.random(1, 4);
+            dy = yasc.random(-1, 1);
+            break;
+        case 1:
+            // top
+            x = yasc.random(0, yasc.width);
+            y = -w;
+            dx = yasc.random(-1, 1);
+            dy = yasc.random(1, 4);
+            break;
+        case 2:
+            // right
+            x = yasc.width + w;
+            y = yasc.random(0, yasc.height);
+            dx = yasc.random(-1, -4);
+            dy = yasc.random(-1, 1);
+            break;
+        case 3:
+            // bottom
+            x = yasc.random(0, yasc.width);
+            y = yasc.height + w;
+            dx = yasc.random(-1, 1);
+            dy = yasc.random(-1, -4);
+            break;
         }
     }
 
-    void render()
-    {
+    void render() {
         yasc.pushMatrix();
         yasc.translate(x, y);
         yasc.rotate(rotation);
         // Write this!!
         yasc.stroke(0, 255, 0);
         yasc.noFill();
-        yasc.triangle(-halfW, halfW, 0, - halfW, halfW, halfW);        
+        yasc.triangle(-halfW, halfW, 0, -halfW, halfW, halfW);
         yasc.popMatrix();
     }
 
-    void update()
-    {        
+    void update() {
         x += dx;
         y += dy;
         rotation += 0.01f;
 
-        if (x < - w)
-        {
+        if (x < -w) {
             respawn();
         }
-        if (x > yasc.width + w)
-        {
+        if (x > yasc.width + w) {
             respawn();
         }
 
-        if (y < - w)
-        {
+        if (y < -w) {
             respawn();
         }
-        if (y > yasc.height + w)
-        {
+        if (y > yasc.height + w) {
             respawn();
         }
     }

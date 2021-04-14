@@ -28,8 +28,7 @@ public class Life1 extends PApplet {
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = col - 1; j <= col + 1; j++) {
                 if (!(i == row && j == col)) {
-                    if(getCell(board, i, j))
-                    {
+                    if (getCell(board, i, j)) {
                         count++;
                     }
                 }
@@ -38,41 +37,32 @@ public class Life1 extends PApplet {
         return count;
 
     }
-    public void updateBoard(boolean[][] board){
-        for(int row = 0; row<size; row++){
-            for(int col = 0; col<size; col++){
+
+    public void updateBoard(boolean[][] board) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
                 int c = countCellsAround(row, col);
-                if(getCell(board, row, col))
-                {
-                    if(c == 2 || c == 3)
-                    {
+                if (getCell(board, row, col)) {
+                    if (c == 2 || c == 3) {
                         setCell(next, row, col, true);
-                    }
-                    else
-                    {
+                    } else {
                         setCell(next, row, col, false);
                     }
-                }
-                else
-                {
-                    if(c == 3)
-                    {
+                } else {
+                    if (c == 3) {
                         setCell(next, row, col, true);
-                    }
-                    else
-                    {
+                    } else {
                         setCell(next, row, col, false);
                     }
                 }
 
             }
         }
-        //swap next and board...
+        // swap next and board...
         boolean[][] temp = board;
         board = next;
         next = temp;
     }
-
 
     public void drawBoard(boolean[][] board) {
         for (int row = 0; row < size; row++) {
@@ -80,7 +70,7 @@ public class Life1 extends PApplet {
                 float x = map(col, 0, size, 0, width);
                 float y = map(row, 0, size, 0, height);
                 if (board[row][col]) {
-                    
+
                     rect(x, y, cellSize, cellSize);
                 }
 
@@ -124,38 +114,37 @@ public class Life1 extends PApplet {
         // number key pressed
         if (keyCode >= '0' && keyCode <= '9')
             mode = keyCode - '0';
-        
-        switch(mode){
-            case 1:
+
+        switch (mode) {
+        case 1:
             randomize();
             break;
-            case 2:
-            for(int row = 0; row<size; row++){
-                for(int col = 0; col<size; col++){
+        case 2:
+            for (int row = 0; row < size; row++) {
+                for (int col = 0; col < size; col++) {
                     board[row][col] = false;
                 }
             }
             break;
-            case 3:
-            for(int row = 0; row<size; row++){
-                for(int col = 0; col<size; col++){
-                    if(row>=(size/2)-3 && row<=(size/2)+3){
+        case 3:
+            for (int row = 0; row < size; row++) {
+                for (int col = 0; col < size; col++) {
+                    if (row >= (size / 2) - 3 && row <= (size / 2) + 3) {
                         board[row][col] = true;
-                    }else if(col>=(size/2)-3 && col<=(size/2)+3){
+                    } else if (col >= (size / 2) - 3 && col <= (size / 2) + 3) {
                         board[row][col] = true;
-                    }else{
+                    } else {
                         board[row][col] = false;
                     }
                 }
             }
         }
 
-        if(key==' ')
-        {
-            if(isRunning){
+        if (key == ' ') {
+            if (isRunning) {
                 noLoop();
                 isRunning = false;
-            }else{
+            } else {
                 loop();
                 isRunning = true;
             }

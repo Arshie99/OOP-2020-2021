@@ -82,16 +82,12 @@ public class BugZap extends PApplet {
 				playerX += playerSpeed;
 			}
 		}
-		if (keyCode == ' ')
-		{
-			if (playerX > bugX - halfBugWidth && playerX < bugX + halfBugWidth)
-			{
+		if (keyCode == ' ') {
+			if (playerX > bugX - halfBugWidth && playerX < bugX + halfBugWidth) {
 				line(playerX, playerY, playerX, bugY);
-				score ++;
+				score++;
 				resetBug();
-			}
-			else
-			{
+			} else {
 				line(playerX, playerY, playerX, 0);
 			}
 		}
@@ -114,23 +110,19 @@ public class BugZap extends PApplet {
 
 	public void draw() {
 		background(0);
-		if (gameMode == 0)
-		{
+		if (gameMode == 0) {
 			fill(255);
 			drawPlayer(playerX, playerY, playerWidth);
 			drawBug(bugX, bugY);
 			moveBug();
 
 			text("Score: " + score, 20, 20);
-		}
-		else
-		{
+		} else {
 			textAlign(CENTER, CENTER);
 			text("GAME OVER!!!", width / 2, height / 2);
 		}
 
-		if (bugY > height - 50)
-		{
+		if (bugY > height - 50) {
 			gameMode = 1;
 		}
 

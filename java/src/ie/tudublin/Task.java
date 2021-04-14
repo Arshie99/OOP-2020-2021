@@ -37,8 +37,7 @@ public class Task {
         this.end = end;
     }
 
-    public Task(TableRow r)
-    {
+    public Task(TableRow r) {
         this(r.getString("Task"), r.getInt("Start"), r.getInt("End"));
     }
 
@@ -46,5 +45,5 @@ public class Task {
     public String toString() {
         return "Task [end=" + end + ", start=" + start + ", task=" + task + "]";
     }
-    
+
 }
